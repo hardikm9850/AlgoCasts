@@ -1,31 +1,47 @@
 import 'package:test/test.dart';
 import 'exercise.dart';
+import 'linked_list.dart';
 
 void main() {
-  test('"hello" is an anagram of "llohe"', () {
-    expect(anagrams('hello', 'llohe'), true);
+  test('circular detects circular linked lists', () {
+    var l = new LinkedList();
+    var a = new Node(11);
+    var b = new Node(22);
+    var c = new Node(33);
+
+    l.head = a;
+    a.next = b;
+    b.next = c;
+    c.next = b;
+
+    expect(circular(l), true);
   });
 
-  test('"hello" is an anagram of "Hello"', () {
-    expect(anagrams('hello', 'Hello'), true);
+  test('circular detects circular linked lists linked at the head', () {
+    var l = new LinkedList();
+    var a = new Node(11);
+    var b = new Node(22);
+    var c = new Node(33);
+
+    l.head = a;
+    a.next = b;
+    b.next = c;
+    c.next = a;
+
+    expect(circular(l), true);
   });
 
-  test('"Whoa! Hi!" is an anagram of "Hi! Whoa!"', () {
-    expect(anagrams('Whoa! Hi!', 'Hi! Whoa!'), true);
-  });
+  test('circular detects non-circular linked lists', () {
+    var l = new LinkedList();
+    var a = new Node(11);
+    var b = new Node(22);
+    var c = new Node(33);
 
-  test('"One One" is not an anagram of "Two two two"', () {
-    expect(anagrams('One One', 'Two two two'), false);
-  });
+    l.head = a;
+    a.next = b;
+    b.next = c;
+    c.next = null;
 
-  test('"One one" is not an anagram of "One one c"', () {
-    expect(anagrams('One one', 'One one c'), false);
-  });
-
-  test(
-      '"A tree, a life, a bench" is not an anagram of "A tree, a fence, a yard"',
-      () {
-    expect(
-        anagrams('A tree, a life, a bench', 'A tree, a fence, a yard'), false);
+    expect(circular(l), false);
   });
 }

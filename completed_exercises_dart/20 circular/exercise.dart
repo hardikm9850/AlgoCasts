@@ -1,27 +1,29 @@
 // --- Directions
-// Check to see if two provided strings are anagrams of eachother.
-// One string is an anagram of another if it uses the same characters
-// in the same quantity. Only consider characters, not spaces
-// or punctuation.  Consider capital letters to be the same as lower case
+// Given a linked list, return true if the list
+// is circular, false if it is not.
 // --- Examples
-//   anagrams('rail safety', 'fairy tales') --> True
-//   anagrams('RAIL! SAFETY!', 'fairy tales') --> True
-//   anagrams('Hi there', 'Bye there') --> False
+//   const l = new List();
+//   const a = new Node('a');
+//   const b = new Node('b');
+//   const c = new Node('c');
+//   l.head = a;
+//   a.next = b;
+//   b.next = c;
+//   c.next = b;
+//   circular(l) // true
 
-bool anagrams(String stringA, String stringB) {
-  print("A: ${sortCharsInString(filter(stringA).toUpperCase())}");
-  print("B: ${sortCharsInString(filter(stringB).toUpperCase())}");
-  return sortCharsInString(filter(stringA).toUpperCase()) ==
-      sortCharsInString(filter(stringB).toUpperCase());
-}
+import 'linked_list.dart';
 
-RegExp regExp = new RegExp(r"\w");
+bool circular(LinkedList list) {
+  Map<Node, int> seenNodes = {};
 
-String filter(String input) {
-  return input.split('').where((char) => regExp.hasMatch(char)).join();
-}
+  for (Node node in list) {
+    print("node ${node.data}");
+    if (seenNodes[node] != null) {
+      return true;
+    }
+    seenNodes[node] = 1;
+  }
 
-String sortCharsInString(String input) {
-  var charsList = input.split('')..sort();
-  return charsList.join();
+  return false;
 }
