@@ -1,0 +1,27 @@
+// --- Directions
+// Write a program that console logs the numbers
+// from 1 to n. But for multiples of three print
+// “fizz” instead of the number and for the multiples
+// of five print “buzz”. For numbers which are multiples
+// of both three and five print “fizzbuzz”.
+// --- Example
+//   fizzBuzz(5);
+//   1
+//   2
+//   fizz
+//   4
+//   buzz
+
+fizzBuzz(maxN, {Function(String) printForUnitTest}) {
+  for (int nn = 1; nn <= maxN; nn++) {
+    if (nn % (3 * 5) == 0) {
+      printForUnitTest("fizzbuzz");
+    } else if (nn % 3 == 0) {
+      printForUnitTest("fizz");
+    } else if (nn % 5 == 0) {
+      printForUnitTest("buzz");
+    } else {
+      printForUnitTest("$nn");
+    }
+  }
+}
