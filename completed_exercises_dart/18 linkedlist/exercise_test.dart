@@ -280,8 +280,10 @@ void main() {
       l.insertLast(3);
       l.insertLast(4);
 
-      for (var node in l) {
+      for (Node node in l) {
+        print("hash: ${node.hashCode} data: ${node.data}");
         node.data += 10;
+        print("hash: ${node.hashCode} data: ${node.data}");
       }
 
       expect(l.getAt(0).data, 11);

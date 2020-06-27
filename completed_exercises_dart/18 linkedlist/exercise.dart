@@ -143,19 +143,20 @@ class LinkedList extends Iterable {
 }
 
 class LinkedListIterator implements Iterator {
-
   LinkedList list;
 
   LinkedListIterator(this.list);
 
-  int currentIndex = 0;
+  int currentIndex = -1;
 
   @override
-  get current => list.getAt(currentIndex);
+  Node get current {
+    return list.getAt(currentIndex);
+  }
 
   @override
   bool moveNext() {
-    return (list.getAt(currentIndex).next != null);
+    currentIndex++;
+    return (list.getAt(currentIndex) != null);
   }
-
 }
