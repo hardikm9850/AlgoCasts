@@ -4,13 +4,14 @@ import 'exercise.dart';
 void main() {
 
   test('A Node has properties "data" and "next"', () {
-    var node = new Node('a', 'b');
-    expect(node.data, 'a');
-    expect(node.next, 'b');
+    var nextNode = Node(2);
+    var node = Node(1, nextNode);
+    expect(node.data, 1);
+    expect(node.next, nextNode);
   });
 
   test('Insert First appends a node to the start of the list', () {
-    var l = new List();
+    var l = new LinkedList();
     l.insertFirst(1);
     expect(l.head.data, 1);
     l.insertFirst(2);
@@ -18,7 +19,7 @@ void main() {
   });
 
   test('Size returns the number of items in the linked list', () {
-    var l = new List();
+    var l = new LinkedList();
     expect(l.size(), 0);
     l.insertFirst(1);
     l.insertFirst(1);
@@ -28,7 +29,7 @@ void main() {
   });
 
   test('GetFirst returns the first element', () {
-    var l = new List();
+    var l = new LinkedList();
     l.insertFirst(1);
     expect(l.getFirst().data, 1);
     l.insertFirst(2);
@@ -36,15 +37,15 @@ void main() {
   });
 
   test('GetLast returns the last element', () {
-    var l = new List();
+    var l = new LinkedList();
     l.insertFirst(2);
-    expect(l.getLast(), { data: 2, next: null });
+    expect(l.getLast(), Node(2));
     l.insertFirst(1);
-    expect(l.getLast(), { data: 2, next: null });
+    expect(l.getLast(), Node(2));
   });
 
   test('Clear empties out the list', () {
-    var l = new List();
+    var l = new LinkedList();
     expect(l.size(), 0);
     l.insertFirst(1);
     l.insertFirst(1);
@@ -56,74 +57,72 @@ void main() {
   });
 
   test('RemoveFirst removes the first node when the list has a size of one', () {
-    var l = new List();
-    l.insertFirst('a');
+    var l = new LinkedList();
+    l.insertFirst(1);
     l.removeFirst();
     expect(l.size(), 0);
     expect(l.getFirst(), null);
   });
 
   test('RemoveFirst removes the first node when the list has a size of three', () {
-    var l = new List();
-    l.insertFirst('c');
-    l.insertFirst('b');
-    l.insertFirst('a');
+    var l = new LinkedList();
+    l.insertFirst(3);
+    l.insertFirst(2);
+    l.insertFirst(1);
     l.removeFirst();
     expect(l.size(), 2);
-    expect(l.getFirst().data, 'b');
+    expect(l.getFirst().data, 2);
     l.removeFirst();
     expect(l.size(), 1);
-    expect(l.getFirst().data, 'c');
+    expect(l.getFirst().data, 3);
   });
 
   test('RemoveLast removes the last node when list is empty', () {
-    var l = new List();
-    expect(() {
-      l.removeLast();
-    }).not.toThrow();
+    var l = new LinkedList();
+    expect(() => l.removeLast(), returnsNormally);
   });
 
   test('RemoveLast removes the last node when list is length 1', () {
-    var l = new List();
-    l.insertFirst('a');
+    var l = new LinkedList();
+    l.insertFirst(1);
     l.removeLast();
     expect(l.head, null);
   });
 
   test('RemoveLast removes the last node when list is length 2', () {
-    var l = new List();
-    l.insertFirst('b');
-    l.insertFirst('a');
+    var l = new LinkedList();
+    l.insertFirst(2);
+    l.insertFirst(1);
 
     l.removeLast();
 
     expect(l.size(), 1);
-    expect(l.head.data, 'a');
+    expect(l.head.data, 1);
   });
 
   test('RemoveLast removes the last node when list is length 3', () {
-    var l = new List();
-    l.insertFirst('c');
-    l.insertFirst('b');
-    l.insertFirst('a');
+    var l = new LinkedList();
+    l.insertFirst(3);
+    l.insertFirst(2);
+    l.insertFirst(1);
     l.removeLast();
 
     expect(l.size(), 2);
-    expect(l.getLast().data, 'b');
+    expect(l.getLast().data, 2);
   });
 
   test('InsertLast adds to the end of the list', () {
-    var l = new List();
-    l.insertFirst('a');
+    var l = new LinkedList();
+    l.insertFirst(1);
 
-    l.insertLast('b');
+    l.insertLast(2);
 
     expect(l.size(), 2);
-    expect(l.getLast().data, 'b');
+    expect(l.getLast().data, 2);
   });
 
   test('GetAt returns the node at given index', () {
-    var l = new List();
+    var l = new LinkedList();
     expect(l.getAt(10), null);
 
     l.insertLast(1);
@@ -138,25 +137,25 @@ void main() {
   });
 
   test('RemoveAt removeAt doesnt crash on an empty list', () {
-    var l = new List();
+    var l = new LinkedList();
     expect(() {
       l.removeAt(0);
       l.removeAt(1);
       l.removeAt(2);
-    }).not.toThrow();
+    }, returnsNormally);
   });
 
   test('removeAt doesnt crash on an index out of bounds', () {
-    var l = new List();
+    var l = new LinkedList();
     expect(() {
-      var l = new List();
-      l.insertFirst('a');
+      var l = new LinkedList();
+      l.insertFirst(1);
       l.removeAt(1);
-    }).not.toThrow();
+    }, returnsNormally);
   });
 
   test('removeAt deletes the first node', () {
-    var l = new List();
+    var l = new LinkedList();
     l.insertLast(1);
     l.insertLast(2);
     l.insertLast(3);
@@ -167,7 +166,7 @@ void main() {
   });
 
   test('removeAt deletes the node at the given index', () {
-    var l = new List();
+    var l = new LinkedList();
     l.insertLast(1);
     l.insertLast(2);
     l.insertLast(3);
@@ -178,7 +177,7 @@ void main() {
   });
 
   test('removeAt works on the last node', () {
-    var l = new List();
+    var l = new LinkedList();
     l.insertLast(1);
     l.insertLast(2);
     l.insertLast(3);
@@ -189,67 +188,67 @@ void main() {
   });
 
   test('InsertAt inserts a new node with data at the 0 index when the list is empty', () {
-    var l = new List();
-    l.insertAt('hi', 0);
-    expect(l.getFirst().data, 'hi');
+    var l = new LinkedList();
+    l.insertAt(9, 0);
+    expect(l.getFirst().data, 9);
   });
 
   test('inserts a new node with data at the 0 index when the list has elements', () {
-    var l = new List();
-    l.insertLast('a');
-    l.insertLast('b');
-    l.insertLast('c');
-    l.insertAt('hi', 0);
-    expect(l.getAt(0).data, 'hi');
-    expect(l.getAt(1).data, 'a');
-    expect(l.getAt(2).data, 'b');
-    expect(l.getAt(3).data, 'c');
+    var l = new LinkedList();
+    l.insertLast(1);
+    l.insertLast(2);
+    l.insertLast(3);
+    l.insertAt(9, 0);
+    expect(l.getAt(0).data, 9);
+    expect(l.getAt(1).data, 1);
+    expect(l.getAt(2).data, 2);
+    expect(l.getAt(3).data, 3);
   });
 
   test('inserts a new node with data at a middle index', () {
-    var l = new List();
-    l.insertLast('a');
-    l.insertLast('b');
-    l.insertLast('c');
-    l.insertLast('d');
-    l.insertAt('hi', 2);
-    expect(l.getAt(0).data, 'a');
-    expect(l.getAt(1).data, 'b');
-    expect(l.getAt(2).data, 'hi');
-    expect(l.getAt(3).data, 'c');
-    expect(l.getAt(4).data, 'd');
+    var l = new LinkedList();
+    l.insertLast(1);
+    l.insertLast(2);
+    l.insertLast(3);
+    l.insertLast(4);
+    l.insertAt(9, 2);
+    expect(l.getAt(0).data, 1);
+    expect(l.getAt(1).data, 2);
+    expect(l.getAt(2).data, 9);
+    expect(l.getAt(3).data, 3);
+    expect(l.getAt(4).data, 4);
   });
 
   test('inserts a new node with data at a last index', () {
-    var l = new List();
-    l.insertLast('a');
-    l.insertLast('b');
-    l.insertAt('hi', 2);
-    expect(l.getAt(0).data, 'a');
-    expect(l.getAt(1).data, 'b');
-    expect(l.getAt(2).data, 'hi');
+    var l = new LinkedList();
+    l.insertLast(1);
+    l.insertLast(2);
+    l.insertAt(9, 2);
+    expect(l.getAt(0).data, 1);
+    expect(l.getAt(1).data, 2);
+    expect(l.getAt(2).data, 9);
   });
 
   test('insert a new node when index is out of bounds', () {
-    var l = new List();
-    l.insertLast('a');
-    l.insertLast('b');
-    l.insertAt('hi', 30);
+    var l = new LinkedList();
+    l.insertLast(1);
+    l.insertLast(2);
+    l.insertAt(9, 30);
 
-    expect(l.getAt(0).data, 'a');
-    expect(l.getAt(1).data, 'b');
-    expect(l.getAt(2).data, 'hi');
+    expect(l.getAt(0).data, 1);
+    expect(l.getAt(1).data, 2);
+    expect(l.getAt(2).data, 9);
   });
 
   test('ForEach applies a transform to each node', () {
-    var l = new List();
+    var l = new LinkedList();
 
     l.insertLast(1);
     l.insertLast(2);
     l.insertLast(3);
     l.insertLast(4);
 
-    l.forEach(node {
+    l.forEach( (node) {
       node.data += 10;
     });
 
@@ -261,14 +260,14 @@ void main() {
 
 group('for...of loops', () {
   test('works with the linked list', () {
-    var l = new List();
+    var l = new LinkedList();
 
     l.insertLast(1);
     l.insertLast(2);
     l.insertLast(3);
     l.insertLast(4);
 
-    for (let node of l) {
+    for (var node in l) {
       node.data += 10;
     }
 
@@ -279,10 +278,11 @@ group('for...of loops', () {
   });
 
   test('for...of works on an empty list', () {
-    var l = new List();
+    var l = new LinkedList();
     expect(() => {
-      for (let node of l) {
+      for (var node in l) {
       }
-    }).not.toThrow();
+    }, returnsNormally);
   });
+});
 }
