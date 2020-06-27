@@ -1,27 +1,28 @@
 // --- Directions
-// Check to see if two provided strings are anagrams of eachother.
-// One string is an anagram of another if it uses the same characters
-// in the same quantity. Only consider characters, not spaces
-// or punctuation.  Consider capital letters to be the same as lower case
-// --- Examples
-//   anagrams('rail safety', 'fairy tales') --> True
-//   anagrams('RAIL! SAFETY!', 'fairy tales') --> True
-//   anagrams('Hi there', 'Bye there') --> False
+// Return the 'middle' node of a linked list.
+// If the list has an even number of elements, return
+// the node at the end of the first half of the list.
+// *Do not* use a counter variable, *do not* retrieve
+// the size of the list, and only iterate
+// through the list one time.
+// --- Example
+//   const l = new LinkedList();
+//   l.insertLast('a')
+//   l.insertLast('b')
+//   l.insertLast('c')
+//   midpoint(l); // returns { data: 'b' }
 
-bool anagrams(String stringA, String stringB) {
-  print("A: ${sortCharsInString(filter(stringA).toUpperCase())}");
-  print("B: ${sortCharsInString(filter(stringB).toUpperCase())}");
-  return sortCharsInString(filter(stringA).toUpperCase()) ==
-      sortCharsInString(filter(stringB).toUpperCase());
-}
+import 'linked_list.dart';
 
-RegExp regExp = new RegExp(r"\w");
-
-String filter(String input) {
-  return input.split('').where((char) => regExp.hasMatch(char)).join();
-}
-
-String sortCharsInString(String input) {
-  var charsList = input.split('')..sort();
-  return charsList.join();
+Node midpoint(LinkedList list) {
+  while (true) {
+    list.removeLast();
+    if (list.getLast() == list.getFirst()) {
+      return list.getFirst();
+    }
+    list.removeFirst();
+    if (list.getLast() == list.getFirst()) {
+      return list.getFirst();
+    }
+  }
 }
