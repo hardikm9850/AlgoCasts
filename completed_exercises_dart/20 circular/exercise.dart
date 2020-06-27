@@ -18,7 +18,6 @@ bool circular(LinkedList list) {
   Map<Node, int> seenNodes = {};
 
   for (Node node in list) {
-    print("node ${node.data}");
     if (seenNodes[node] != null) {
       return true;
     }
