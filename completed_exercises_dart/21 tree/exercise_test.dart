@@ -31,10 +31,14 @@ void main() {
       expect(t.root, null);
     });
 
-    test('Can traverse bf', () {
+//    a
+//  b   c
+//  d
+//
+    test('Can traverse BreadthFirst', () {
       List<String> letters = [];
-      var t = new Tree();
-      t.root = new Node('a');
+      var t = Tree();
+      t.root = Node('a');
       t.root.add('b');
       t.root.add('c');
       t.root.children[0].add('d');
@@ -46,7 +50,11 @@ void main() {
       expect(letters, ['a', 'b', 'c', 'd']);
     });
 
-    test('Can traverse DF', () {
+//    a
+//  b   d
+//  c
+//
+    test('Can traverse DepthFirst', () {
       List<String> letters = [];
       var t = new Tree();
       t.root = new Node('a');
@@ -59,6 +67,27 @@ void main() {
       });
 
       expect(letters, ['a', 'b', 'c', 'd']);
+    });
+
+//    a
+//  b  f
+//  c
+// d e
+    test('Can traverse deeper DepthFirst', () {
+      List<String> letters = [];
+      var t = new Tree();
+      t.root = new Node('a');
+      t.root.add('b');
+      t.root.add('f');
+      t.root.children[0].add('c');
+      t.root.children[0].children[0].add('d');
+      t.root.children[0].children[0].add('e');
+
+      t.traverseDepthFirst((node) {
+        letters.add(node.data);
+      });
+
+      expect(letters, ['a', 'b', 'c', 'd', 'e', 'f']);
     });
   });
 }

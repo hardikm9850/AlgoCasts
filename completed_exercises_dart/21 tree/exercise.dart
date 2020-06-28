@@ -16,15 +16,40 @@ class Node {
 
   Node(this.data) : children = [];
 
-  add(String data) {}
+  add(String data) {
+    children.add(Node(data));
+  }
 
-  remove(String data) {}
+  remove(String data) {
+    children.removeWhere((node) => node.data == data);
+  }
 }
 
 class Tree {
   Node root;
 
-  traverseBF(Function(Node)) {}
+  _traverseBF(Node baseNode, Function(Node) fn) {
+    for (Node node in baseNode.children) {
+      fn(node);
+    }
+    for (Node node in baseNode.children) {
+      _traverseBF(node, fn);
+    }
+  }
 
-  traverseDF(Function(Node)) {}
+  _traverseDF(Node baseNode, Function(Node) fn) {
+    fn(baseNode);
+    for (Node node in baseNode.children) {
+      _traverseDF(node, fn);
+    }
+  }
+
+  traverseBreadthFirst(Function(Node) fn) {
+    fn(root);
+    _traverseBF(root, fn);
+  }
+
+  traverseDepthFirst(Function(Node) fn) {
+    _traverseDF(root, fn);
+  }
 }
