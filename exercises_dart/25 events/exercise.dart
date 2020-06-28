@@ -5,15 +5,13 @@
 
 class Events {
   // Register an event handler
-  on(eventName, callback) {}
+  void on(String eventName, Function callback) {}
 
   // Trigger all callbacks associated
   // with a given eventName
-  trigger(eventName) {}
+  void trigger(String eventName) {}
 
   // Remove all event handlers associated
   // with the given eventName
-  off(eventName) {}
+  void off(String eventName) {}
 }
-
-module.exports = Events;
