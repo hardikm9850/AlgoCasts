@@ -1,0 +1,4 @@
+name: reversestring
+
+dev_dependencies:
+  test: ^1.15.0
