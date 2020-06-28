@@ -1,27 +1,13 @@
 // --- Directions
-// Check to see if two provided strings are anagrams of eachother.
-// One string is an anagram of another if it uses the same characters
-// in the same quantity. Only consider characters, not spaces
-// or punctuation.  Consider capital letters to be the same as lower case
-// --- Examples
-//   anagrams('rail safety', 'fairy tales') --> True
-//   anagrams('RAIL! SAFETY!', 'fairy tales') --> True
-//   anagrams('Hi there', 'Bye there') --> False
+// --- Directions
+// Given a node, validate the binary search tree,
+// ensuring that every node's left hand child is
+// less than the parent node's value, and that
+// every node's right hand child is greater than
+// the parent
 
-bool anagrams(String stringA, String stringB) {
-  print("A: ${sortCharsInString(filter(stringA).toUpperCase())}");
-  print("B: ${sortCharsInString(filter(stringB).toUpperCase())}");
-  return sortCharsInString(filter(stringA).toUpperCase()) ==
-      sortCharsInString(filter(stringB).toUpperCase());
-}
+import 'node.dart';
 
-RegExp regExp = new RegExp(r"\w");
-
-String filter(String input) {
-  return input.split('').where((char) => regExp.hasMatch(char)).join();
-}
-
-String sortCharsInString(String input) {
-  var charsList = input.split('')..sort();
-  return charsList.join();
+bool validate(Node node) {
+  return false;
 }
