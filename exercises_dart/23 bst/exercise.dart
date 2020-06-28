@@ -11,6 +11,14 @@
 // class.  Contains should accept a 'data' argument
 // and return the Node in the tree with the same value.
 
-class Node {}
+class Node {
+  int data;
+  Node left;
+  Node right;
+  Node(this.data);
 
-module.exports = Node;
+  insert(int data) {}
+  Node contains(int data) {
+    return null;
+  }
+}

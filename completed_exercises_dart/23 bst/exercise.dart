@@ -1,27 +1,24 @@
 // --- Directions
-// Check to see if two provided strings are anagrams of eachother.
-// One string is an anagram of another if it uses the same characters
-// in the same quantity. Only consider characters, not spaces
-// or punctuation.  Consider capital letters to be the same as lower case
-// --- Examples
-//   anagrams('rail safety', 'fairy tales') --> True
-//   anagrams('RAIL! SAFETY!', 'fairy tales') --> True
-//   anagrams('Hi there', 'Bye there') --> False
+// 1) Implement the Node class to create
+// a binary search tree.  The constructor
+// should initialize values 'data', 'left',
+// and 'right'.
+// 2) Implement the 'insert' method for the
+// Node class.  Insert should accept an argument
+// 'data', then create an insert a new node
+// at the appropriate location in the tree.
+// 3) Implement the 'contains' method for the Node
+// class.  Contains should accept a 'data' argument
+// and return the Node in the tree with the same value.
 
-bool anagrams(String stringA, String stringB) {
-  print("A: ${sortCharsInString(filter(stringA).toUpperCase())}");
-  print("B: ${sortCharsInString(filter(stringB).toUpperCase())}");
-  return sortCharsInString(filter(stringA).toUpperCase()) ==
-      sortCharsInString(filter(stringB).toUpperCase());
-}
+class Node {
+  int data;
+  Node left;
+  Node right;
+  Node(this.data);
 
-RegExp regExp = new RegExp(r"\w");
-
-String filter(String input) {
-  return input.split('').where((char) => regExp.hasMatch(char)).join();
-}
-
-String sortCharsInString(String input) {
-  var charsList = input.split('')..sort();
-  return charsList.join();
+  insert(int data) {}
+  Node contains(int data) {
+    return null;
+  }
 }
