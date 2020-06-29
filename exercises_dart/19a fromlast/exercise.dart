@@ -11,6 +11,8 @@
 //    list.insertLast('d');
 //    fromLast(list, 2).data // 'b'
 
-function fromLast(list, n) {}
+import 'linked_list.dart';
 
-module.exports = fromLast;
+Node fromLast(LinkedList list, int n) {
+  return null;
+}
