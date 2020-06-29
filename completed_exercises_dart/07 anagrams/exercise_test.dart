@@ -28,4 +28,8 @@ void main() {
     expect(
         anagrams('A tree, a life, a bench', 'A tree, a fence, a yard'), false);
   });
+
+  test('"Riverpod" is an anagram of "Provider"', () {
+    expect(anagrams('Riverpod', 'Provider'), true);
+  });
 }
