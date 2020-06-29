@@ -14,7 +14,7 @@ void main() {
     return sorted;
   }
 
-  int size = 1000;
+  int size = 100;
   List<int> randomArray = createArray(size);
   List<int> sortedArray = sortArray(randomArray);
 
