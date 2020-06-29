@@ -8,37 +8,36 @@
 
 import 'node.dart';
 
-bool _validate(Node node, Function(Node, bool) fn) {
-//    print("_searchLeaf ${node.data}");
-  bool leftIsOk;
-  bool rightIsOk;
-
+_traverseBottomUp(Node node, Function(Node) fn) {
   if (node.left != null) {
-    if (node.left.data < node.data) {
-      leftIsOk = validate(node.left);
-      fn(node, true);
-    } else {
-      leftIsOk = false;
-    }
-  } else {
-    leftIsOk = true;
+    _traverseBottomUp(node.left, fn);
   }
+  fn(node);
   if (node.right != null) {
-    if (node.right.data > node.data) {
-      rightIsOk = validate(node.right);
-      fn(node, false);
-    } else {
-      rightIsOk = false;
-    }
-  } else {
-    rightIsOk = true;
+    _traverseBottomUp(node.right, fn);
   }
-  return leftIsOk && rightIsOk;
 }
 
 bool validate(Node node) {
-  bool simpleNodeChecksAreOk = _validate(node, (node, isLeft) {
-    print("${node.data} ${node.left?.data} ${node.right?.data}  $isLeft");
+  List<int> sequence = [];
+  _traverseBottomUp(node.left, (node) {
+    sequence.add(node.data);
   });
-  return simpleNodeChecksAreOk;
+  sequence.add(node.data);
+  _traverseBottomUp(node.right, (node) {
+    sequence.add(node.data);
+  });
+  print(sequence);
+  return isSorted(sequence);
+}
+
+bool isSorted(List<int> sequence) {
+  int previousValue = sequence.first;
+  for (int value in sequence) {
+    if (value < previousValue) {
+      return false;
+    }
+    previousValue = value;
+  }
+  return true;
 }
