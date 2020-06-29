@@ -19,13 +19,59 @@ List<int> bubbleSort(List<int> arr) {
 }
 
 List<int> selectionSort(List<int> arr) {
+  int indexOfLowest;
+  for (int outerIndex = 0; outerIndex < arr.length; outerIndex++) {
+    indexOfLowest = outerIndex;
+    for (int innerIndex = outerIndex + 1;
+        innerIndex < arr.length;
+        innerIndex++) {
+      if (arr[innerIndex] < arr[indexOfLowest]) {
+        indexOfLowest = innerIndex;
+      }
+    }
+    if (indexOfLowest != outerIndex) {
+      final lowerValue = arr[outerIndex];
+      arr[outerIndex] = arr[indexOfLowest];
+      arr[indexOfLowest] = lowerValue;
+    }
+  }
   return arr;
 }
 
 List<int> mergeSort(List<int> arr) {
-  return arr;
+  int halfSize = arr.length ~/ 2;
+  List<int> firstHalf = arr.sublist(0, halfSize);
+  List<int> secondHalf = arr.sublist(halfSize);
+  if (halfSize > 512) {
+    return merge(
+        mergeSort(bubbleSort(firstHalf)), mergeSort(bubbleSort(secondHalf)));
+  } else {
+    return merge(bubbleSort(firstHalf), bubbleSort(secondHalf));
+  }
 }
 
 List<int> merge(List<int> left, List<int> right) {
-  return left;
+  List<int> mergedList = [];
+  var leftIterator = left.iterator;
+  var rightIterator = right.iterator;
+  leftIterator.moveNext();
+  rightIterator.moveNext();
+  while (leftIterator.current != null && rightIterator.current != null) {
+    if (leftIterator.current < rightIterator.current) {
+      mergedList.add(leftIterator.current);
+      leftIterator.moveNext();
+    } else {
+      mergedList.add(rightIterator.current);
+      rightIterator.moveNext();
+    }
+  }
+  while (leftIterator.current != null) {
+    mergedList.add(leftIterator.current);
+    leftIterator.moveNext();
+  }
+  while (rightIterator.current != null) {
+    mergedList.add(rightIterator.current);
+    rightIterator.moveNext();
+  }
+  return mergedList;
 }
