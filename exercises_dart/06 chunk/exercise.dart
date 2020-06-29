@@ -9,18 +9,5 @@
 // chunk([1, 2, 3, 4, 5], 10) --> [[ 1, 2, 3, 4, 5]]
 
 List<List<int>> chunk(List<int> array, size) {
-  List<List<int>> listOfLists = [];
-  List<int> subList = [];
-  int ix;
-  for(ix = 0; ix < array.length; ix++) {
-    if(ix > 0 && (ix % size == 0)) {
-      listOfLists.add(subList);
-      subList = [];
-    }
-    subList.add(array[ix]);
-  }
-  if(subList.length > 0) {
-    listOfLists.add(subList);
-  }
-  return listOfLists;
+  return null;
 }

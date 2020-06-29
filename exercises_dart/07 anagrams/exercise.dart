@@ -9,19 +9,5 @@
 //   anagrams('Hi there', 'Bye there') --> False
 
 bool anagrams(String stringA, String stringB) {
-  print("A: ${sortCharsInString(filter(stringA).toUpperCase())}");
-  print("B: ${sortCharsInString(filter(stringB).toUpperCase())}");
-  return sortCharsInString(filter(stringA).toUpperCase()) ==
-      sortCharsInString(filter(stringB).toUpperCase());
-}
-
-RegExp regExp = new RegExp(r"\w");
-
-String filter(String input) {
-  return input.split('').where((char) => regExp.hasMatch(char)).join();
-}
-
-String sortCharsInString(String input) {
-  var charsList = input.split('')..sort();
-  return charsList.join();
+  return true;
 }

@@ -13,15 +13,5 @@
 //   buzz
 
 fizzBuzz(maxN, {Function(String) printForUnitTest}) {
-  for (int nn = 1; nn <= maxN; nn++) {
-    if (nn % (3 * 5) == 0) {
-      printForUnitTest("fizzbuzz");
-    } else if (nn % 3 == 0) {
-      printForUnitTest("fizz");
-    } else if (nn % 5 == 0) {
-      printForUnitTest("buzz");
-    } else {
-      printForUnitTest("$nn");
-    }
-  }
+  printForUnitTest("?");
 }

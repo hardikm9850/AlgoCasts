@@ -15,14 +15,5 @@
 import 'linked_list.dart';
 
 Node midpoint(LinkedList list) {
-  while (true) {
-    list.removeLast();
-    if (list.getLast() == list.getFirst()) {
-      return list.getFirst();
-    }
-    list.removeFirst();
-    if (list.getLast() == list.getFirst()) {
-      return list.getFirst();
-    }
-  }
+  return null;
 }

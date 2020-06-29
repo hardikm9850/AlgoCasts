@@ -15,14 +15,5 @@
 import 'linked_list.dart';
 
 bool circular(LinkedList list) {
-  Map<Node, int> seenNodes = {};
-
-  for (Node node in list) {
-    if (seenNodes[node] != null) {
-      return true;
-    }
-    seenNodes[node] = 1;
-  }
-
   return false;
 }

@@ -9,14 +9,5 @@
 //   reverseInt(-90) === -9
 
 int reverseInt(int n) {
-  bool isNegative = (n < 0);
-  String intAsDigits = n.toString();
-  String digitsWithoutSign = isNegative ? intAsDigits.substring(1) : intAsDigits;
-  String reversedDigits = reverse(digitsWithoutSign);
-  int reversedInt = int.parse(reversedDigits);
-  return isNegative ? -1*reversedInt : reversedInt;
-}
-
-String reverse(String input) {
-  return input.split('').reduce((reversed, ch) => ch+reversed);
+  return 0;
 }

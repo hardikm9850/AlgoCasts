@@ -18,19 +18,5 @@
 //       '####'
 
 void steps(int lineCount, {Function(String) printForUnitTest}) {
-  for (int lineNr = 0; lineNr < lineCount; lineNr++) {
-    printForUnitTest(hashLine(lineCount, lineNr));
-  }
-}
-
-String hashLine(int lineCount, int lineNr) {
-  StringBuffer buffer = StringBuffer();
-  for (int pos = 0; pos < lineCount; pos++) {
-    if (pos <= lineNr) {
-      buffer.write('#');
-    } else {
-      buffer.write(' ');
-    }
-  }
-  return buffer.toString();
+  printForUnitTest('?');
 }

@@ -15,15 +15,9 @@ class Stack {
 
   Stack() : _stack = [];
 
-  push(int element) {
-    _stack.add(element);
-  }
+  push(int element) {}
 
-  int pop() {
-    return _stack.removeLast();
-  }
+  int pop() {}
 
-  int peek() {
-    return _stack.last;
-  }
+  int peek() {}
 }

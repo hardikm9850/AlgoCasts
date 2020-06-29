@@ -1,20 +1,19 @@
+// --- Directions
+// Given a string, return a new string with the reversed
+// order of characters
+// --- Examples
+//   reverse('apple') === 'leppa'
+//   reverse('hello') === 'olleh'
+//   reverse('Greetings!') === '!sgniteerG'
 
 String reverse(String input) {
-  String reversed = '';
-  for(var ix = 0; ix < input.length; ix++) {
-    reversed = '${input[ix]}$reversed';
-  }
-  return reversed;
+  return '?';
 }
 
 String reverse2(String input) {
-  String reversed = '';
-  for(var ch in input.split('')) {
-    reversed = ch + reversed;
-  }
-  return reversed;
+  return '?';
 }
 
 String reverse3(String input) {
-  return input.split('').reduce((reversed, ch) => ch+reversed);
+  return '';
 }

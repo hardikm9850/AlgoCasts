@@ -15,29 +15,9 @@
 import 'stack.dart';
 
 class Queue {
-  Stack stack1 = Stack();
-  Stack stack2 = Stack();
+  add(int element) {}
 
-  add(int element) {
-    if (stack1.peek() == null) {
-      while (stack2.peek() != null) {
-        stack1.push(stack2.pop());
-      }
-    }
-    stack1.push(element);
-  }
+  int remove() {}
 
-  int remove() {
-    while (stack1.peek() != null) {
-      stack2.push(stack1.pop());
-    }
-    return stack2.pop();
-  }
-
-  int peek() {
-    while (stack1.peek() != null) {
-      stack2.push(stack1.pop());
-    }
-    return stack2.peek();
-  }
+  int peek() {}
 }

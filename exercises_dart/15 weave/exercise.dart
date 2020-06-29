@@ -25,21 +25,9 @@
 import 'queue.dart';
 
 class ProxyQueue {
-  Queue sourceOne;
-  Queue sourceTwo;
-  ProxyQueue(this.sourceOne, this.sourceTwo);
-  int removeCounter = 0;
-  remove() {
-    if (removeCounter % 2 == 0) {
-      removeCounter++;
-      return sourceOne.remove();
-    } else {
-      removeCounter++;
-      return sourceTwo.remove();
-    }
-  }
+  remove() {}
 }
 
 weave(Queue sourceOne, Queue sourceTwo) {
-  return ProxyQueue(sourceOne, sourceTwo);
+  return ProxyQueue();
 }

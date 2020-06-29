@@ -17,20 +17,5 @@
 import 'dart:math';
 
 void pyramid(int lineCount, {Function(String) printForUnitTest}) {
-  for (int lineNr = 0; lineNr < lineCount; lineNr++) {
-    printForUnitTest(pyramidLine(lineNr, lineCount));
-  }
-}
-
-String pyramidLine(int level, int height) {
-  StringBuffer buffer = StringBuffer();
-  int width = 1 + (height - 1) * 2;
-  for (int hpos = 1; hpos <= width; hpos++) {
-    if (hpos < (height - level) || hpos > (height + level)) {
-      buffer.write(' ');
-    } else {
-      buffer.write('#');
-    }
-  }
-  return buffer.toString();
+  printForUnitTest('?');
 }

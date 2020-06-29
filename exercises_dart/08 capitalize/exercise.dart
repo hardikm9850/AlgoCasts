@@ -8,11 +8,5 @@
 //   capitalize('look, it is working!') --> 'Look, It Is Working!'
 
 String capitalize(String input) {
-  var wordList = input.split(' ');
-  var outPut = wordList.map((word) {
-    var charsList = word.split('');
-    charsList[0] = charsList[0].toUpperCase();
-    return charsList.join();
-  }).join(' ');
-  return outPut;
+  return '?';
 }

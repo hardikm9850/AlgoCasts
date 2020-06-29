@@ -10,5 +10,5 @@
 RegExp regExp = new RegExp(r"[aeiouAEIOU]{1,1}");
 
 int vowels(String input) {
-  return regExp.allMatches(input).length;
+  return 0;
 }

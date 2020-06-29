@@ -8,19 +8,9 @@
 //   palindrome("abcdefg") === false
 
 bool palindrome(String input) {
-  int halfLength = input.length ~/ 2;
-  for (int nn = 0; nn < halfLength; nn++) {
-    if (input[nn] != input[input.length - 1 - nn]) {
-      return false;
-    }
-  }
   return true;
 }
 
 bool palindrome2(String input) {
-  return input == reverse(input);
-}
-
-String reverse(String input) {
-  return input.split('').reduce((reversed, ch) => ch + reversed);
+  return true;
 }

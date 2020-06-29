@@ -11,15 +11,7 @@
 class Queue {
   List<int> _q = [];
 
-  void add(int element) {
-    _q.add(element);
-  }
+  void add(int element) {}
 
-  int remove() {
-    if (_q.length > 0) {
-      return _q.removeAt(0);
-    } else {
-      return null;
-    }
-  }
+  int remove() {}
 }
