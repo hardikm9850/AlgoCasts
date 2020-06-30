@@ -12,6 +12,6 @@
 //   4
 //   buzz
 
-fizzBuzz(maxN, {Function(String) printForUnitTest}) {
+fizzBuzz(int maxN, {Function(String) printForUnitTest}) {
   printForUnitTest("?");
 }
